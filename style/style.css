@@ -1,0 +1,226 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	overflow: hidden; /* 스크롤바 제거 */
+}
+
+.background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* 비디오를 내용 뒤로 보냄 */
+    background-size: cover;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px 25px;
+    width: 100%;
+    background-color: transparent; /* 기본 배경색 */
+    transition: background-color 0.3s; /* 배경색 변경 애니메이션 */
+    z-index: 1000; /* 네비게이션 바를 비디오 위로 */
+    border-bottom: 1px solid #ccc;
+    position: relative; /* 네비게이션 바를 상대 위치로 설정 */
+}
+
+.navbar:hover {
+    background-color: white !important; /* 호버 시 배경색 변경, 우선순위 강제 적용 */
+}
+
+.navbar .link {
+    padding-left: 60px; /* 왼쪽 패딩 추가 */
+    padding-right: 40px; /* 오른쪽 패딩 추가 */
+    text-decoration: none;
+    color: white; /* 기본 글씨색 하얀색 */
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 0.3s; /* 글씨색 변경 애니메이션 */
+}
+
+.nav-container .navbar {
+    background-color: transparent; /* 기본 배경색 */
+    transition: background-color 0.3s; /* 배경색 변경 애니메이션 */
+}
+
+.nav-container .navbar:hover {
+    background-color: white !important; /* 호버 시 배경색 변경, 우선순위 강제 적용 */
+}
+
+.nav-links .link, .language-links .link {
+	text-decoration: none;
+	color: white; /* 기본 글씨색 하얀색 */
+	margin: 0 20px;
+	font-size: 30px !important;
+	font-weight: bold;
+	transition: color 0.3s; /* 글씨색 변경 애니메이션 */
+}
+
+.navbar:hover .link, .navbar:hover .language-links .link {
+	color: black; /* 네비게이션 바 호버 시 글씨색을 검은색으로 변경 */
+}
+
+.nav-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.logo {
+	height: 50px;
+	margin-right: 10px;
+}
+
+.nav-links {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+}
+
+.language-links {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	flex-basis: 110px;
+	margin-right: 60px;
+}
+
+.nav-links .link, .language-links .link {
+	text-decoration: none;
+	color: white;
+	margin-left: 70px; /* 왼쪽 여백 증가 */
+	margin-right: 20px; /* 오른쪽 여백 증가 */
+	font-size: 20px !important;
+	font-weight: bold;
+}
+
+
+.nav-links .link:first-child {
+	margin-left: 0; /* 첫 번째 링크의 왼쪽 여백 제거 */
+}
+
+.nav-links .link:last-child {
+	margin-right: 0; /* 마지막 링크의 오른쪽 여백 제거 */
+}
+
+.nav-links .link:hover, .language-links .link:hover {
+	color: blue; /* 네비게이션 바 호버 시 글씨색을 옅은 파란색으로 변경 */
+}
+
+.language-links .link {
+    margin-left: -40px; /* 왼쪽 여백을 줄임 */
+    margin-right: -40px; /* 오른쪽 여백을 줄임 */
+}
+
+.navbar .dropdown-content {
+    position: absolute;
+    background-color: #fff; /* 배경색 변경 */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* 그림자 효과 추가 */
+    width: auto; /* 너비 자동 조정 */
+    left: 0;
+    right: 0;
+    text-align: center; /* 텍스트 중앙 정렬 */
+    padding: 10px 0; /* 상하 패딩 조정 */
+    display: none; /* 초기에는 보이지 않도록 설정 */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.navbar li:hover .dropdown-content {
+    display: block; /* 호버 시 보이도록 설정 */
+    opacity: 1;
+    visibility: visible;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%; /* 네비게이션 바 항목의 바로 아래에 위치 */
+    left: 0; /* 네비게이션 바 항목의 왼쪽 정렬 */
+    right: 0; /* 네비게이션 바 항목의 오른쪽 정렬 */
+    width: 100%; /* 네비게이션 바 항목의 너비와 일치 */
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    display: none; /* 초기에는 보이지 않도록 설정 */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.navbar:hover .dropdown-content {
+    display: block; /* 호버 시 보이도록 설정 */
+    opacity: 1;
+    visibility: visible;
+    max-height: 500px; /* 충분한 높이 설정 */
+}
+.navbar:hover .dropdown-content {
+    display: block;
+    max-height: 500px; /* 충분한 높이로 설정 */
+}
+
+.dropdown-content a {
+	color: #333;
+	padding: 8px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left; /* 텍스트를 왼쪽 정렬 */
+	width: auto; /* 링크의 너비를 자동으로 설정 */
+	pointer-events: auto; /* 링크에서도 포인터 이벤트를 활성화 */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* 호버 시 배경색 변경 */
+}
+
+.dropdown:hover .dropdown-content {
+	display: block; /* 마우스 호버 시 드롭다운 메뉴 표시 */
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1; /* 호버 시 배경색 변경 */
+	color: blue; /* 호버 시 글씨색 변경 */
+}
+
+.dropdown:hover .dropdown-content {
+	display: block; /* 마우스 호버 시에도 드롭다운 메뉴 표시 유지 */
+}
+
+
+.navbar .dropdown-content ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .dropdown-content li {
+    padding: 8px 16px;
+    margin: 10px 0; /* 상하 여백 10px 추가 */
+}
+
+.navbar .dropdown-content li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 10px; /* 좌우 여백 10px 추가 */
+}
+
+.navbar .dropdown-content li a:hover {
+    background-color: #f1f1f1; /* 호버 시 배경색 변경 */
+}
